@@ -38,10 +38,10 @@ public class DataBaseHandler {
     private String password;
     private Connection connection;
 
-    public DataBaseHandler(String databaseHost, int databasePort, String user, String password) {
-        this.url = "jdbc:postgresql://" + databaseHost + ":"+databasePort+"/studs";
-        this.user = user;
-        this.password = password;
+    public DataBaseHandler(Config config) {
+        this.url = config.getJdbcUrl();
+        this.user = config.getUsername();
+        this.password = config.getPassword();
         connectToDataBase();
     }
 

@@ -11,6 +11,7 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ForkJoinTask;
 
@@ -37,7 +38,8 @@ public class Server {
             }
         }
         stream = System.in;
-        DataBaseHandler dataBaseHandler = new DataBaseHandler("localhost", 1337, "s336759", "wes537");
+        Config config = new Config(Paths.get("config.properties"));
+        DataBaseHandler dataBaseHandler = new DataBaseHandler(config);
         DataBaseUserManager dataBaseUserManager = new DataBaseUserManager(dataBaseHandler);
         Module.setDataBaseUserManager(dataBaseUserManager);
         DataBaseCollectionManager dataBaseCollectionManager = new DataBaseCollectionManager(dataBaseHandler, dataBaseUserManager);

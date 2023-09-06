@@ -4,15 +4,34 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.example</groupId>
-    <artifactId>VT_labs_1</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>client-server</groupId>
+    <artifactId>application</artifactId>
+    <version>1.0</version>
     <name>VT_labs_1</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.8.2</junit.version>
     </properties>
+
+    <!-- Определение профилей -->
+    <profiles>
+        <!-- Профиль 1 -->
+        <profile>
+            <id>client</id>
+            <properties>
+                <mainClass>com.example.vt_labs_1.App</mainClass>
+            </properties>
+        </profile>
+
+        <!-- Профиль 2 -->
+        <profile>
+            <id>server</id>
+            <properties>
+                <mainClass>com.example.vt_labs_1.server.App</mainClass>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
@@ -140,9 +159,26 @@
                             <noManPages>true</noManPages>
                             <stripDebug>true</stripDebug>
                             <noHeaderFiles>true</noHeaderFiles>
+
+                            <options>
+                                <option>-javaagent:/home/kyoto/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/lib/idea_rt.jar=41181:/home/kyoto/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/bin -Dfile.encoding=UTF-8 -classpath /home/kyoto/.m2/repository/org/postgresql/postgresql/42.3.3/postgresql-42.3.3.jar:/home/kyoto/.m2/repository/org/checkerframework/checker-qual/3.5.0/checker-qual-3.5.0.jar:/home/kyoto/.m2/repository/org/openjfx/javafx-controls/11.0.2/javafx-controls-11.0.2.jar:/home/kyoto/.m2/repository/org/openjfx/javafx-graphics/11.0.2/javafx-graphics-11.0.2.jar:/home/kyoto/.m2/repository/org/openjfx/javafx-base/11.0.2/javafx-base-11.0.2.jar:/home/kyoto/.m2/repository/org/openjfx/javafx-fxml/11.0.2/javafx-fxml-11.0.2.jar:/home/kyoto/.m2/repository/org/openjfx/javafx-web/11.0.2/javafx-web-11.0.2.jar:/home/kyoto/.m2/repository/org/openjfx/javafx-media/11.0.2/javafx-media-11.0.2.jar:/home/kyoto/.m2/repository/org/jetbrains/annotations/13.0/annotations-13.0.jar:/home/kyoto/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.5.10/kotlin-stdlib-common-1.5.10.jar -p /home/kyoto/.m2/repository/com/gluonhq/attach/util/4.0.9/util-4.0.9.jar:/home/kyoto/.m2/repository/com/dlsc/formsfx/formsfx-core/11.3.2/formsfx-core-11.3.2.jar:/home/kyoto/.m2/repository/org/openjfx/javafx-fxml/11.0.2/javafx-fxml-11.0.2-linux.jar:/home/kyoto/workspace/tcp-client-server/target/classes:/home/kyoto/.m2/repository/org/openjfx/javafx-base/11.0.2/javafx-base-11.0.2-linux.jar:/home/kyoto/.m2/repository/org/openjfx/javafx-graphics/11.0.2/javafx-graphics-11.0.2-linux.jar:/home/kyoto/.m2/repository/com/gluonhq/attach/storage/4.0.9/storage-4.0.9.jar:/home/kyoto/.m2/repository/com/github/almasb/fxgl-gameplay/11.17/fxgl-gameplay-11.17.jar:/home/kyoto/.m2/repository/org/openjfx/javafx-web/11.0.2/javafx-web-11.0.2-linux.jar:/home/kyoto/.m2/repository/com/github/almasb/fxgl-io/11.17/fxgl-io-11.17.jar:/home/kyoto/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.12.1/jackson-databind-2.12.1.jar:/home/kyoto/.m2/repository/org/kordamp/ikonli/ikonli-javafx/12.3.0/ikonli-javafx-12.3.0.jar:/home/kyoto/.m2/repository/org/openjfx/javafx-controls/11.0.2/javafx-controls-11.0.2-linux.jar:/home/kyoto/.m2/repository/eu/hansolo/tilesfx/11.48/tilesfx-11.48.jar:/home/kyoto/.m2/repository/com/github/almasb/fxgl-core/11.17/fxgl-core-11.17.jar:/home/kyoto/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.5.10/kotlin-stdlib-1.5.10-modular.jar:/home/kyoto/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.12.1/jackson-core-2.12.1.jar:/home/kyoto/.m2/repository/org/openjfx/javafx-media/11.0.2/javafx-media-11.0.2-linux.jar:/home/kyoto/.m2/repository/org/controlsfx/controlsfx/11.1.1/controlsfx-11.1.1.jar:/home/kyoto/.m2/repository/com/github/almasb/fxgl-scene/11.17/fxgl-scene-11.17.jar:/home/kyoto/.m2/repository/com/github/almasb/fxgl/11.17/fxgl-11.17.jar:/home/kyoto/.m2/repository/org/kordamp/bootstrapfx/bootstrapfx-core/0.4.0/bootstrapfx-core-0.4.0.jar:/home/kyoto/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.12.1/jackson-annotations-2.12.1.jar:/home/kyoto/.m2/repository/com/gluonhq/attach/lifecycle/4.0.9/lifecycle-4.0.9.jar:/home/kyoto/.m2/repository/com/github/almasb/fxgl-entity/11.17/fxgl-entity-11.17.jar:/home/kyoto/.m2/repository/net/synedra/validatorfx/0.2.1/validatorfx-0.2.1.jar:/home/kyoto/.m2/repository/com/gluonhq/attach/audio/4.0.9/audio-4.0.9.jar:/home/kyoto/.m2/repository/org/kordamp/ikonli/ikonli-core/12.3.0/ikonli-core-12.3.0.jar</option>
+                            </options>
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.2</version> <!-- Версия плагина может изменяться -->
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- Здесь вы можете указать атрибуты manifest.mf -->
+                            <mainClass>${mainClass}</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>
