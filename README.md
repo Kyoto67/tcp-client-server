@@ -141,3 +141,23 @@ public enum Country {
 * При отрисовке объекта должна воспроизводиться согласованная с преподавателем анимация.
 * Возможность редактирования отдельных полей любого из объектов (принадлежащего пользователю). Переход к редактированию объекта возможен из таблицы с общим списком объектов и из области с визуализацией объекта.
 * Возможность удаления выбранного объекта (даже если команды remove ранее не было).
+
+---
+# Запуск
+
+1. В файле *config.properties* укажите данные для подключения к базе данных.
+2. В базе данных создайте необходимые таблицы:
+```
+CREATE TABLE my_users (    id SERIAL PRIMARY KEY,    username VARCHAR(255) NOT NULL,    password VARCHAR(255) NOT NULL);
+CREATE TABLE movie_table (    id SERIAL PRIMARY KEY,    name VARCHAR(255) NOT NULL,    creation_date BIGINT NOT NULL,    oscars_count BIGINT,    genre VARCHAR(255) NOT NULL,    mpaa_rating VARCHAR(255) NOT NULL,    coordinates_x DOUBLE PRECISION NOT NULL,    coordinates_y INT NOT NULL,    director_name VARCHAR(255) NOT NULL,    director_height DOUBLE PRECISION NOT NULL,    director_eye_color VARCHAR(255) NOT NULL,    director_hair_color VARCHAR(255) NOT NULL,    director_nationality VARCHAR(255) NOT NULL,    director_location_x DOUBLE PRECISION NOT NULL,    director_location_y DOUBLE PRECISION NOT NULL,    director_location_z DOUBLE PRECISION NOT NULL,    director_location_name VARCHAR(255) NOT NULL,    user_id BIGINT NOT NULL,    FOREIGN KEY (user_id) REFERENCES my_users(id));
+```
+3. Соберите сервер:
+```
+mvn clean package
+```
+4. Запустите сервер:
+```
+java -jar target/application-1.0-jar-with-dependencies.jar
+```
+5. Для запуска клиента откройте проект в IDE и запустите com.example.vt_labs_1.App (дада я не осилил подтянуть JavaFX в джарник, ну может потом как-нибудь руки дойдут).
+---
